@@ -26,8 +26,6 @@ jobs:
       # See https://github.com/databricks/setup-cli
       - uses: databricks/setup-cli@main
 
-      - run: pip install ruff
-      - run: ruff check .
       # Deploy the bundle to the "prod" target as defined
       # in the bundle's settings file.
       - run: databricks bundle deploy

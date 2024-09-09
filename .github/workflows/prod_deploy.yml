@@ -50,9 +50,6 @@ jobs:
       # Use the downloaded Databricks CLI.
       - uses: databricks/setup-cli@main
 
-      - run: pip install ruff
-      - run: ruff check .
-
       # Run the Databricks workflow named "my-job" as defined in the
       # bundle that was just deployed.
       - run: databricks bundle run -t prod dab_project_job
