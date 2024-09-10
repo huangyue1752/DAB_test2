@@ -45,6 +45,22 @@ resources:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           notebook_task:
             notebook_path: ../src/shopify/shopify_scd2/shopify_scd2_function.ipynb
+
+        - task_key: notebook_task5
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+          notebook_task:
+            notebook_path: ../src/weather/weather_bronze/weather_bronze.ipynb
+
+        - task_key: notebook_task6
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+          notebook_task:
+            notebook_path: ../src/weather/weather_silver/weather_silver.ipynb
         
         
       job_clusters:
