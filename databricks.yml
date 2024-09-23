@@ -25,6 +25,17 @@ targets:
   #   workspace:
   #     host: https://adb-213311967472827.7.azuredatabricks.net
 
+
+    # The 'qa' target, for quality assurance purposes.
+  qa:
+    mode: qa
+    default: false  # Set to false since dev is the default
+    workspace:
+      host: https://adb-213311967472827.7.azuredatabricks.net
+      # Specify a unique root path for QA to avoid conflicts with dev/prod
+      root_path: /Users/huangyue1752@gmail.com/.bundle/${bundle.name}/${bundle.target}/qa
+
+
   # The 'prod' target, used for production deployment.
   prod:
     # We use 'mode: production' to indicate this is a production deployment.
@@ -34,7 +45,7 @@ targets:
       host: https://adb-213311967472827.7.azuredatabricks.net
       # We always use /Users/huangyue1752@gmail.com for all resources to make sure we only have a single copy.
       # If this path results in an error, please make sure you have a recent version of the CLI installed.
-      root_path: /Users/huangyue1752@gmail.com/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Users/huangyue1752@gmail.com/.bundle/${bundle.name}/${bundle.target}/prod
     run_as:
       # This runs as huangyue1752@gmail.com in production. We could also use a service principal here,
       # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
