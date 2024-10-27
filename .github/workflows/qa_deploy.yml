@@ -59,13 +59,20 @@ jobs:
       - name: Run Ruff
         run: |
          ruff check src/unittesr_ruff_tested.py
+      - name: Run Ruff2
+        run: |
+         ruff check src/universal_function_test_ruffchecked.ipynb
+
+      - name: Run Ruff3
+        run: |
+         ruff check src/weather_data_ingestion_Ruff_checked.py
 
       # Use the downloaded Databricks CLI.
       - uses: databricks/setup-cli@main
 
       # Run the Databricks workflow named "my-job" as defined in the
       # bundle that was just deployed.
-      - run: databricks bundle run -t qa dab_project_job
+      - run: databricks bundle run -t dev dab_project_job
         working-directory: .
         env: 
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
