@@ -20,7 +20,7 @@ resources:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           notebook_task:
-            notebook_path: ../src/shopify/shopify_bronze/shopofy_bronze.ipynb
+            notebook_path: ../src/weather_data_ingestion_Ruff_checked.py
 
         - task_key: notebook_task2
           job_cluster_key: job_cluster
@@ -28,7 +28,7 @@ resources:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           notebook_task:
-            notebook_path: ../src/shopify/shopify_silver/shopofy_silver.ipynb
+            notebook_path: ../src/universal_function_test_ruffchecked.ipynb
 
         - task_key: notebook_task3
           job_cluster_key: job_cluster
@@ -36,32 +36,7 @@ resources:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           notebook_task:
-            notebook_path: ../src/shopify/shopify_golden/shopofy_golden.ipynb
-
-        - task_key: notebook_task4
-          job_cluster_key: job_cluster
-          libraries:
-            - maven:
-                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/shopify/shopify_scd2/shopify_scd2_function.ipynb
-
-        - task_key: notebook_task5
-          job_cluster_key: job_cluster
-          libraries:
-            - maven:
-                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/weather/weather_bronze/weather_bronze.ipynb
-
-        - task_key: notebook_task6
-          job_cluster_key: job_cluster
-          libraries:
-            - maven:
-                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/weather/weather_silver/weather_silver.ipynb
-        
+            notebook_path: ../src/unittesr_ruff_tested.py
         
       job_clusters:
         - job_cluster_key: job_cluster
@@ -70,5 +45,5 @@ resources:
             node_type_id: Standard_DS3_v2
             autoscale:
                 min_workers: 1
-                max_workers: 4
+                max_workers: 1
             data_security_mode: "SHARED"
