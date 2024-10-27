@@ -19,8 +19,8 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/weather_data_ingestion_Ruff_checked.py
+          spark_python_task:
+            python_file: ../src/weather_data_ingestion_Ruff_checked.py
 
         - task_key: notebook_task2
           job_cluster_key: job_cluster
@@ -35,8 +35,8 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/unittesr_ruff_tested.py
+          spark_python_task:
+            python_file: ../src/unittesr_ruff_tested.py
         
       job_clusters:
         - job_cluster_key: job_cluster
