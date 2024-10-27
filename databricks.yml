@@ -32,9 +32,6 @@ targets:
     default: false  # Set to false since dev is the default
     workspace:
       host: https://adb-213311967472827.7.azuredatabricks.net
-      # Specify a unique root path for QA to avoid conflicts with dev/prod
-      root_path: /Users/huangyue1752@gmail.com/.bundle/${bundle.name}/${bundle.target}/qa
-
 
   # The 'prod' target, used for production deployment.
   prod:
