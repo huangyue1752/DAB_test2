@@ -8,12 +8,12 @@ include:
 
 targets:
   # The 'dev' target, for development purposes. This target is the default.
-  dev:
+  qa:
     # We use 'mode: development' to indicate this is a personal development copy:
     # - Deployed resources get prefixed with '[dev my_user_name]'
     # - Any job schedules and triggers are paused by default
     # - The 'development' mode is used for Delta Live Tables pipelines
-    mode: development
+    mode: qa
     default: true
     workspace:
       host: https://adb-213311967472827.7.azuredatabricks.net
@@ -25,13 +25,6 @@ targets:
   #   workspace:
   #     host: https://adb-213311967472827.7.azuredatabricks.net
 
-
-    # The 'qa' target, for quality assurance purposes.
-  qa:
-    mode: qa
-    default: false  # Set to false since dev is the default
-    workspace:
-      host: https://adb-213311967472827.7.azuredatabricks.net
 
   # The 'prod' target, used for production deployment.
   prod:
