@@ -35,7 +35,7 @@ jobs:
         working-directory: .
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: development
+          DATABRICKS_BUNDLE_ENV: dev
 
   # Validate, deploy, and then run the bundle.
   pipeline_update:
@@ -57,6 +57,6 @@ jobs:
       # bundle that was just deployed.
       - run: databricks bundle run -t qa dab_project_job
         working-directory: .
-        env:
+        env: 
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: development
+          DATABRICKS_BUNDLE_ENV: dev
