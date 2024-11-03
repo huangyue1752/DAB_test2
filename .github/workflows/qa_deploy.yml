@@ -58,18 +58,26 @@ jobs:
       # Run Ruff to check for issues in the code
       - name: Run Ruff
         run: |
-         ruff check src/unittesr_ruff_tested.py
+         ruff check src/weather/weather_data_ingestion_function_unit_test.py
       - name: Run Ruff2
         run: |
-         ruff check src/universal_function_test_ruffchecked.ipynb
+         ruff check src/weather/weather_data_ingestion_function.py
 
       - name: Run Ruff3
         run: |
-         ruff check src/weather_data_ingestion_Ruff_checked.py
+         ruff check src/data_process_function_unit_test.py
 
       - name: Run Ruff4
         run: |
-         ruff check src/shopify_scd2_function.ipynb
+         ruff check src/data_process_function.ipynb
+
+      - name: Run Ruff5
+        run: |
+         ruff check src/scd_type_two_function_unit_test.py
+
+      - name: Run Ruff6
+        run: |
+         ruff check src/scd_type_two_function.py
 
       # Use the downloaded Databricks CLI.
       - uses: databricks/setup-cli@main
