@@ -20,23 +20,47 @@ resources:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           spark_python_task:
-            python_file: ../src/weather_data_ingestion_Ruff_checked.py
+            python_file: ../src/weather/weather_data_ingestion_function.py
 
         - task_key: notebook_task2
           job_cluster_key: job_cluster
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
-          notebook_task:
-            notebook_path: ../src/universal_function_test_ruffchecked.ipynb
+          spark_python_task:
+            python_file: ../src/weather/weather_data_ingestion_function_unit_test.py
 
         - task_key: notebook_task3
           job_cluster_key: job_cluster
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+          notebook_task:
+            notebook_path: ../src/data_process_function.ipynb
+
+        - task_key: notebook_task4
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
           spark_python_task:
-            python_file: ../src/unittesr_ruff_tested.py
+            python_file: ../src/data_process_function_unit_test.py
+
+        - task_key: notebook_task5
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+          spark_python_task:
+            python_file: ../src/scd_type_two_function.py
+
+        - task_key: notebook_task6
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+          spark_python_task:
+            python_file: ../src/scd_type_two_function_unit_test.py        
         
       job_clusters:
         - job_cluster_key: job_cluster
