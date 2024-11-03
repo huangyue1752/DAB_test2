@@ -11,7 +11,7 @@ def SCD2Function(catalog_name, db_name, table_name_stage, table_name_dim, catalo
     # Drop the staging table if it exists and create a new one
     spark.sql(f"DROP TABLE IF EXISTS {table_name_stage};")
     column_definitions = ", ".join([f"{col} STRING" for col in column_names])
-    spark.sql(f"CREATE TABLE {table_name_stage} ({column_definitions}) USING DELTA;")
+    spark.sql(f"CREATE TABLE IF NOT EXISTS {table_name_stage} ({column_definitions}) USING DELTA;")
 
     # Truncate the staging table
     spark.sql(f"TRUNCATE TABLE {table_name_stage};")
