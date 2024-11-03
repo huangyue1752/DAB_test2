@@ -6,6 +6,9 @@ import asyncio
 from azure.eventhub.aio import EventHubProducerClient
 from azure.eventhub import EventData
 import json
+import nest_asyncio
+
+nest_asyncio.apply()
 
 class WeatherDataIngestion:
     def __init__(self, city, eventhub_conn_str, eventhub_name):
@@ -24,8 +27,9 @@ class WeatherDataIngestion:
         data = details.split('\n')
         time_of_day, sky_condition = data[0], data[1]
 
+        
         dataframe = pd.DataFrame([[temp, time_of_day, sky_condition]], 
-                                 columns=['temperature', 'time', 'sky_condition'])
+                                 columns=['temperature', 'time', 'skycondition'])
         return dataframe.to_json(orient='records', lines=True)
 
     async def send_to_eventhub(self, data):
@@ -39,7 +43,7 @@ class WeatherDataIngestion:
             await producer.send_batch(event_data_batch)
             print("Data sent successfully to Event Hubs.")
 
-    async def stream_weather_data(self, interval=60):
+    async def stream_weather_data(self, interval=30):
         """Stream weather data at regular intervals."""
         while True:
             try:
@@ -50,9 +54,10 @@ class WeatherDataIngestion:
             except Exception as e:
                 print(f"Error: {e}")
             await asyncio.sleep(interval)
+            print(data_json)
 
 # Example function to run the streaming framework
-async def run_weather_stream(city, conn_str, eventhub_name, interval=60):
+async def run_weather_stream(city, conn_str, eventhub_name, interval=30):
     ingestion = WeatherDataIngestion(city, conn_str, eventhub_name)
     await ingestion.stream_weather_data(interval)
 
@@ -63,7 +68,7 @@ if __name__ == "__main__":
 
     loop = asyncio.get_event_loop()
     try:
-        asyncio.ensure_future(run_weather_stream(city, conn_str, eventhub_name, interval=60))
+        asyncio.ensure_future(run_weather_stream(city, conn_str, eventhub_name, interval=30))
         loop.run_forever()
     except KeyboardInterrupt:
         pass

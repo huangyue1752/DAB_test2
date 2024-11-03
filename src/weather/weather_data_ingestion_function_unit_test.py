@@ -1,6 +1,6 @@
 
 import json
-from weather_streaming_function import WeatherDataIngestion  # Replace with actual module name
+from weather_data_ingestion_function import WeatherDataIngestion  # Replace with actual module name
 from unittest.mock import patch, AsyncMock
 import unittest
 import asyncio

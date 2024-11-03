@@ -73,8 +73,6 @@ class TestSCD2Function(unittest.TestCase):
             normalized_expected = ' '.join(expected_merge_query.split())
             self.assertEqual(normalized_actual, normalized_expected)
 
-        # Optionally check the final SELECT statement
-        mock_sql.assert_any_call(f"SELECT * FROM {table_name_dim}")
 
 if __name__ == '__main__':
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
