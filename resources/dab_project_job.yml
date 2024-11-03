@@ -19,6 +19,15 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
+
           spark_python_task:
             python_file: ../src/weather/weather_data_ingestion_function.py
 
@@ -27,6 +36,14 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
           spark_python_task:
             python_file: ../src/weather/weather_data_ingestion_function_unit_test.py
 
@@ -35,6 +52,14 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
           notebook_task:
             notebook_path: ../src/data_process_function.ipynb
 
@@ -43,6 +68,14 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
           spark_python_task:
             python_file: ../src/data_process_function_unit_test.py
 
@@ -51,6 +84,14 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
           spark_python_task:
             python_file: ../src/scd_type_two_function.py
 
@@ -59,6 +100,14 @@ resources:
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
           spark_python_task:
             python_file: ../src/scd_type_two_function_unit_test.py        
         
