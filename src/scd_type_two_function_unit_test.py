@@ -27,7 +27,7 @@ class TestSCD2Function(unittest.TestCase):
         
         # Check the CREATE TABLE statement
         column_definitions = ", ".join([f"{col} STRING" for col in column_names])
-        mock_sql.assert_any_call(f"CREATE TABLE {table_name_stage} ({column_definitions}) USING DELTA;")
+        mock_sql.assert_any_call(f"CREATE TABLE IF NOT EXISTS {table_name_stage} ({column_definitions}) USING DELTA;")
         
         # Check TRUNCATE statement
         mock_sql.assert_any_call(f"TRUNCATE TABLE {table_name_stage};")
@@ -52,7 +52,7 @@ class TestSCD2Function(unittest.TestCase):
                     {' OR '.join([f'a.{col} != b.{col}' for col in column_names[1:]])}
                 )
             ) b 
-            ON a.{column_names[0]} = b.mergeKey 
+            ON a.{column_names[0]} = b.mergeKey and a.{column_names[-1]}='active'
             WHEN MATCHED AND (
                 {' OR '.join([f'b.{col} != a.{col}' for col in column_names[1:]])}
             ) THEN 

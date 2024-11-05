@@ -35,7 +35,7 @@ def SCD2Function(catalog_name, db_name, table_name_stage, table_name_dim, catalo
                 { ' OR '.join([f'a.{col} != b.{col}' for col in column_names[1:]]) }
             )
         ) b 
-        ON a.{column_names[0]} = b.mergeKey 
+        ON a.{column_names[0]} = b.mergeKey and a.{column_names[-1]}='active'
         WHEN MATCHED AND (
             { ' OR '.join([f'b.{col} != a.{col}' for col in column_names[1:]]) }
         ) THEN 

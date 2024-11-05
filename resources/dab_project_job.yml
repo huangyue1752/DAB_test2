@@ -15,7 +15,7 @@ resources:
 
       tasks:
 
-        - task_key: notebook_task7
+        - task_key: notebook_task1
           job_cluster_key: job_cluster
           libraries:
             - maven:
@@ -28,13 +28,13 @@ resources:
                 package: pandas
             - pypi:
                 package: requests
-          notebook_task:
-            notebook_path: ../src/test.ipynb   
+          spark_python_task:
+            python_file: ../src/scd_type_two_function_unit_test.py  
 
-        - task_key: notebook_task6
+        - task_key: notebook_task2
           job_cluster_key: job_cluster
           depends_on: 
-            - task_key: notebook_task7
+            - task_key: notebook_task1
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
@@ -46,8 +46,44 @@ resources:
                 package: pandas
             - pypi:
                 package: requests
-          notebook_task:
-            notebook_path: ../src/data_process_function.ipynb  
+          spark_python_task:
+            python_file: ../src/scd_type_two_function.py
+
+        - task_key: notebook_task3
+          job_cluster_key: job_cluster
+          depends_on: 
+            - task_key: notebook_task2
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
+          spark_python_task:
+            python_file: ../src/data_process_function_unit_test.py
+
+        - task_key: notebook_task4
+          job_cluster_key: job_cluster
+          depends_on: 
+            - task_key: notebook_task2
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
+          spark_python_task:
+            python_file: ../src/weather/weather_data_ingestion_function_unit_test.py
         
       job_clusters:
         - job_cluster_key: job_cluster
