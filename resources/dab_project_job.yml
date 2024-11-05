@@ -14,6 +14,22 @@ resources:
           - huangyue1752@gmail.com
 
       tasks:
+        - task_key: notebook_task6
+          job_cluster_key: job_cluster
+          libraries:
+            - maven:
+                coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+            - pypi:
+                package: azure-eventhub
+            - pypi:
+                package: beautifulsoup4
+            - pypi:
+                package: pandas
+            - pypi:
+                package: requests
+          notebook_task:
+            notebook_path: ../src/data_process_function.ipynb
+
         - task_key: notebook_task7
           job_cluster_key: job_cluster
           libraries:
