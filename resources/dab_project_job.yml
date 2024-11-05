@@ -67,7 +67,7 @@ resources:
           spark_python_task:
             python_file: ../src/data_process_function_unit_test.py
 
-        - task_key: notebook_task3.5
+        - task_key: notebook_task3_5
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task3
