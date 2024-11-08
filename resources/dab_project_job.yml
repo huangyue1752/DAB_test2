@@ -15,7 +15,7 @@ resources:
 
       tasks:
 
-        - task_key: notebook_task1
+        - task_key: scd_unittest
           job_cluster_key: job_cluster
           libraries:
             - maven:
@@ -31,7 +31,7 @@ resources:
           spark_python_task:
             python_file: ../src/scd_type_two_function_unit_test.py  
 
-        - task_key: notebook_task2
+        - task_key: scd_typetwo_function
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task1
@@ -49,7 +49,7 @@ resources:
           spark_python_task:
             python_file: ../src/scd_type_two_function.py
 
-        - task_key: notebook_task3
+        - task_key: spark_bronze_silver_generator_unittest
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task2
@@ -67,7 +67,7 @@ resources:
           spark_python_task:
             python_file: ../src/data_process_function_unit_test.py
 
-        - task_key: notebook_task3_5
+        - task_key: spark_bronze_silver_generator
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task3
@@ -85,7 +85,7 @@ resources:
           notebook_task:
             notebook_path: ../src/data_process_function.ipynb
 
-        - task_key: notebook_task4
+        - task_key: data_ingestion_unittest
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task2
@@ -103,7 +103,7 @@ resources:
           spark_python_task:
             python_file: ../src/weather/weather_data_ingestion_function_unit_test.py
 
-        - task_key: notebook_task5
+        - task_key: data_ingestion_function
           job_cluster_key: job_cluster
           depends_on: 
             - task_key: notebook_task4
