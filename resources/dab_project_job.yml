@@ -23,7 +23,7 @@ resources:
             - pypi:
                 package: azure-eventhub
             - pypi:
-                package: beautifulsoup4
+                package: beautifulsoup4 
             - pypi:
                 package: pandas
             - pypi:
