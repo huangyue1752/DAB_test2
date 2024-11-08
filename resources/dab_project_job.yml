@@ -34,7 +34,7 @@ resources:
         - task_key: scd_typetwo_function
           job_cluster_key: job_cluster
           depends_on: 
-            - task_key: notebook_task1
+            - task_key: scd_unittest
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
@@ -70,7 +70,7 @@ resources:
         - task_key: spark_bronze_silver_generator
           job_cluster_key: job_cluster
           depends_on: 
-            - task_key: notebook_task3
+            - task_key: spark_bronze_silver_generator_unittest
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
@@ -106,7 +106,7 @@ resources:
         - task_key: data_ingestion_function
           job_cluster_key: job_cluster
           depends_on: 
-            - task_key: notebook_task4
+            - task_key: data_ingestion_unittest
           libraries:
             - maven:
                 coordinates: com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
